@@ -1,0 +1,184 @@
+###Baidouars Config File###
+#Plugin made by SuperMaxime38
+
+#Please report bugs
+
+enable: true #A game is standing ? (Auto)
+custom-damage: true #Use custom damages ? '(Recommanded)
+custom-broadcast: "&f[&6Baidouars&f] > " #Name of this plugin in broadcast (ex. [Baidouars] > Herobrine joined the red team)
+lang: en_us #ONLY TWO LANGUAGES AVAIABLE : en_us & fr_fr
+respawn-delay: 5 #Delay before respawning in seconds
+
+#EXPERIMENTAL
+custom-kb: # Use custom knockbacks ? EXPERIMENTAL ! MAY NOT WORK !
+  enable: true
+  tnt-multiplier: 1 #Multiplier
+  fireball-multiplier: 1
+
+#IMPORTANT - IF YOU HAVE SEVERAL MAPS AND YOU WANT TO EASILY USE THEM PLEASE USE PRESETS 
+preset: #Tutorial --> <link>
+  enable: false
+  name: "example" #Auto add '.yml' extension
+
+#The map must be a world edit schematic
+#The schem must be saved in plugins/WorldEdit/schematics/
+#You dont need to put ".schem" at the end of the map name (in the parameter below)
+map:
+  file: "example"
+  pos1:
+    X: 0
+    Y: 0
+    Z: 0
+  pos2:
+    X: 0
+    Y: 0
+    Z: 0
+  minY: 0 #Under this coord, Players will instantly die
+  maxY: 64  #Above thos coord, Players cant place blocks
+    
+team:
+  maxplayers: 2
+  red:
+    players: []
+      
+      
+  blue:
+    players: []
+      
+      
+  green:
+    players: []
+      
+      
+  yellow:
+    players: []
+      
+      
+bed:
+  red:
+    X: 0
+    Y: 0
+    Z: 0
+    alive: false
+  
+  blue:
+    X: 0
+    Y: 0
+    Z: 0
+    alive: false
+  
+  green:
+    X: 0
+    Y: 0
+    Z: 0
+    alive: false
+  
+  yellow:
+    X: 0
+    Y: 0
+    Z: 0
+    alive: false
+  
+
+iron-gen:
+  speed: 3
+  gold-speed: 7
+  spawn-protection: 8
+  red:
+    locX: -351
+    locY: 85
+    locZ: 1297
+  
+  
+  blue:
+    locX: 0
+    locY: 0
+    locZ: 0
+  
+  
+  green:
+    locX: 0
+    locY: 0
+    locZ: 0
+  
+  
+  yellow:
+    locX: 0
+    locY: 0
+    locZ: 0
+  
+  
+
+diamond-gen: #Generateurs de diamant | RG = Red - Green : le generateur entre l'ile rouge et verte
+  speed: 20
+  gen-rg: 
+    locX: -355
+    locY: 85
+    locZ: 1297
+  
+  gen-ry: #RY = red - yellow
+    locX: 0
+    locY: 0
+    locZ: 0
+  
+  gen-bg: #BG = blue - green
+    locX: 0
+    locY: 0
+    locZ: 0
+  
+  gen-by: # BY = blue - yellow
+    locX: 0
+    locY: 0
+    locZ: 0
+  
+  
+
+emerald-gen:
+  speed: 60
+  gen1:
+    locX: -359
+    locY: 85
+    locZ: 1297
+    
+  gen2:
+    locX: 0
+    locY: 0
+    locZ: 0
+
+# WARNING : These locations are set in DOUBLE (X.X) (for spawn villager in the middle of the block)
+npc: 
+  iron:
+    red:
+      locX: -354.5
+      locY: 87
+      locZ: 1301.5
+    blue:
+      locX: 0
+      locY: 0
+      locZ: 0
+    green:
+      locX: 0
+      locY: 0
+      locZ: 0
+    yellow:
+      locX: 0
+      locY: 0
+      locZ: 0
+    
+  diamond:
+    red:
+      locX: 0
+      locY: 0
+      locZ: 0
+    blue:
+      locX: 0
+      locY: 0
+      locZ: 0
+    green:
+      locX: 0
+      locY: 0
+      locZ: 0
+    yellow:
+      locX: 0
+      locY: 0
+      locZ: 0
