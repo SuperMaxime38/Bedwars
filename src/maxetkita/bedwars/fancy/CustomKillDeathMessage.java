@@ -9,7 +9,12 @@ public class CustomKillDeathMessage {
 		Random rdm = new Random();
 		int i = rdm.nextInt(0);
 		switch(i) {
-		//Do something
+		case 0:
+			
+			break;
+		case 1:
+			
+			break;
 		}
 	}
 }
