@@ -33,8 +33,8 @@ map:
     X: 0
     Y: 0
     Z: 0
-  minY: 0 #Under this coord, Players will instantly die
-  maxY: 64  #Above thos coord, Players cant place blocks
+  minY: 80 #Under this coord, Players will instantly die
+  maxY: 100  #Above thos coord, Players cant place blocks
     
 team:
   maxplayers: 2
@@ -56,10 +56,10 @@ team:
       
 bed:
   red:
-    X: 0
-    Y: 0
-    Z: 0
-    alive: false
+    X: -346
+    Y: 85
+    Z: 1295
+    alive: true
   
   blue:
     X: 0
@@ -91,9 +91,9 @@ iron-gen:
   
   
   blue:
-    locX: 0
-    locY: 0
-    locZ: 0
+    locX: -350
+    locY: 80
+    locZ: 1300
   
   
   green:
@@ -109,7 +109,7 @@ iron-gen:
   
   
 
-diamond-gen: #Generateurs de diamant | RG = Red - Green : le generateur entre l'ile rouge et verte
+diamond-gen: #Diamond Generators | RG = Red - Green : this generator will be between the red and green island
   speed: 20
   gen-rg: 
     locX: -355

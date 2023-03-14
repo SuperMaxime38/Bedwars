@@ -1,5 +1,7 @@
 package maxetkita.bedwars;
 
+import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import maxetkita.bedwars.commands.BWTeamCommand;
@@ -31,6 +33,8 @@ public class Bedwars extends JavaPlugin{
 		getServer().getPluginManager().registerEvents(new DeathListener(this), this);
 		getServer().getPluginManager().registerEvents(new BedBrokenManager(this), this);
 		getCommand("bedwars").setTabCompleter(new BedwarsCompleter());
+		Bukkit.getWorld("world").setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
+		Bukkit.getWorld("world").setGameRule(GameRule.SHOW_DEATH_MESSAGES, false);
 		System.out.println("[Baidouars] > Plugin enabled !");
 	}
 	
