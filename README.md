@@ -1,7 +1,7 @@
 # About this ressource
 Bedars is a highly configurable Bedwars plugin.  
 You also can enable a special mode with custom classes/abilities  
-Vesrion : 0.9.1
+Vesrion : 0.9.11
 
 # Downloading
 Coming soon
@@ -21,7 +21,7 @@ You also sant destroy your own bed.
 ### Config : see [here](#config) how teams work in config.yml
 
 # Config
-coming soon
+[Here](https://github.com/SuperMaxime38/Bedwars/blob/master/config.yml) is the config.yml default file
 
 # References
 ## Teams
@@ -29,3 +29,6 @@ coming soon
     blue
     green
     yellow
+
+#  Known issues
+Comments arent saving in the config file
