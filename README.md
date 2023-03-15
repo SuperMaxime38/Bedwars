@@ -1,7 +1,7 @@
 # About this ressource
 Bedars is a highly configurable Bedwars plugin.  
 You also can enable a special mode with custom classes/abilities  
-Vesrion : 0.9.11
+Version : 0.9.12
 
 # Downloading
 Coming soon
@@ -16,7 +16,10 @@ You also sant destroy your own bed.
 ### Commands 
 /bwteam : Main commands for the teams  
 /bwteam join <team> : Join a [team](#teams-1)  
-/bwteam leave : Leave yout actual team (if you're in a team)  
+/bwteam leave : Leave yout actual team (if you're in a team)
+  
+/bw start: (Admin) Start a game of Bedwars  
+/bw lang <lang>: (Admin) See what language is actualy set (lol) + Can change the [lang](#lang)
 
 ### Config : see [here](#config) how teams work in config.yml
 
@@ -29,6 +32,9 @@ You also sant destroy your own bed.
     blue
     green
     yellow
+## Lang
+    en_us : English
+    fr_fr : Français
 
 #  Known issues
 Comments arent saving in the config file
