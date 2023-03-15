@@ -1,5 +1,6 @@
 package maxetkita.bedwars.managers;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -40,16 +41,22 @@ public class DamageManager implements Listener{
 					e.setCancelled(true);
 					return;
 				}
-				
-				double dmg = 1;
-				@SuppressWarnings("deprecation")
-				ItemStack item = damager.getItemInHand();
-				if(item == null) {
-					dmg = 1;
+				if(main.getConfig().getBoolean("enable") == false) {
+					e.setCancelled(true);
+					System.out.println("testt");
 					return;
 				}
 				
-				boolean isEnchant = item.getItemMeta().hasEnchants();
+				double dmg = 1;
+				
+				boolean isEnchant = false;
+				ItemStack item = damager.getInventory().getItemInMainHand();
+				if(item.getType().equals(Material.AIR)) {
+					dmg = 1;
+					return;
+				} else {
+					isEnchant = item.getItemMeta().hasEnchants();
+				}
 				
 				if(main.getConfig().getBoolean("custom-damage") == false) {
 					return;
@@ -117,6 +124,7 @@ public class DamageManager implements Listener{
 		}
 	}
 	
+	@EventHandler
 	public static void specialDamages(EntityDamageByEntityEvent e) { //Damaged by tnts, fireballs, etc...
 		
 	}

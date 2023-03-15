@@ -18,7 +18,7 @@ public class LanguagesManager {
 		en_us
 	}
 	
-	 public static boolean doesExist(String name, Bedwars main) {
+	 public static boolean doesExist(String name) {
 	    	File userdata = new File(Bukkit.getServer().getPluginManager().getPlugin("Baidouars").getDataFolder(), File.separator + "lang");
 	        File f = new File(userdata, File.separator + name + ".yml");
 	        

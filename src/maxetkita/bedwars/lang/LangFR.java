@@ -17,6 +17,8 @@ public class LangFR {
 	     if (!f.exists()) {
 	         try {
 	        	 
+	        	 //Commandes
+	        	 
 	        	 preset.createSection("commands");
 	        	 
 	        	 preset.set("commands.bedwars.noargs", "§aListe des commandes pour §6/bedwars §f:"
@@ -47,11 +49,21 @@ public class LangFR {
 	        	 preset.set("commands.bedwars.preset.delete", "§4ATTENTION : §cCette action supprimera definitivement le fichier"
 	        	 		+ "\nConfirmez en tapant : /bedwars preset deleteconfirm ");
 	        	 
-	        	 preset.set("commands.bedwars.preset.deleteconfimcfg", "§lVous avez suprrimé le preset enregistré dans la config, le nom a été remplacé par 'null'");
+	        	 preset.set("commands.bedwars.preset.deleteconfimcfg", "§lVous avez suprimmé le preset enregistré dans la config, le nom a été remplacé par 'null'");
+		         
+	        	 preset.set("commands.bedwars.start", "§aVous avez commencé une partie de Bedwars !");
+
+		         preset.set("commands.lang.noargs", "Le langage actuel est : §afr_fr");
+		         preset.set("commands.lang.noargs2", "Faites §6/bw lang <nom_langue> §fpour changer de langue");
+		         preset.set("commands.lang.changed", "Langue changée sur Français");
+		         preset.set("commands.lang.error", "Langue inconnue");
+		         
+		         //GUI
 	        	 
 	        	 preset.createSection("gui");
 	        	 preset.set("gui.ironshop", "§l§8Magasin de fer");
 	        	 
+	        	 //Objets
 	        	 
 	        	 preset.createSection("items");
 	        	 
@@ -91,7 +103,13 @@ public class LangFR {
 
 	        	 preset.set("items.utilgui", "§aUtilitaires");
 	        	 preset.set("items.tnt", "§4TNT");
+
+	        	 //Custom messages
+	        	 preset.set("messages.kill.0_1", " §fa detruit");
+	        	 preset.set("messages.kill.0_2", "§f dans un combat épic");
 	        	 
+	        	 preset.set("messages.void.0", " §f est tombé dans le vide");
+	        	 preset.set("messages.void.1", "§f pensait pouvoir voler... il a apprit qu'il ne pouvait pas");
 	        	 
 	             preset.save(f);
 	             

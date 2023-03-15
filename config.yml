@@ -145,7 +145,7 @@ emerald-gen:
     locY: 0
     locZ: 0
 
-# WARNING : These locations are set in DOUBLE (X.X) (for spawn villager in the middle of the block)
+# WARNING : These locations are set in DOUBLE (X.X) (to spawn villager in the middle of the block)
 npc: 
   iron:
     red:

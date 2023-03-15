@@ -17,6 +17,8 @@ public class LangEN {
 	     if (!f.exists()) {
 	         try {
 	        	 
+	        	 //Commands
+	        	 
 	        	 preset.createSection("commands");
 	        	 
 	        	 preset.set("commands.bedwars.noargs", "§aCommands for §6/bedwars §f:"
@@ -48,10 +50,20 @@ public class LangEN {
 		        	 		+ "\nConfirm by typing : /bedwars preset deleteconfirm ");
 		        	 
 		         preset.set("commands.bedwars.preset.deleteconfimcfg", "§lYou deleted the preset save in the config, it has been replaced by 'null'");
+		         
+		         preset.set("commands.bedwars.start", "§aYou started a game of Bedwars !");
+		         
+		         preset.set("commands.lang.noargs", "The current language is : §aen_us");
+		         preset.set("commands.lang.noargs2", "Do §6/bw lang <language_name> §fto change your language");
+		         preset.set("commands.lang.changed", "Language changed on English");
+		         preset.set("commands.lang.error", "Unknown language");
 	        	 
+		         //GUIs
+		         
 		         preset.createSection("gui");
 	        	 preset.set("gui.ironshop", "§l§8Iron Shop");
 	        	 
+	        	 //Items
 	        	 
 	        	 preset.createSection("items");
 	        	 
@@ -90,6 +102,13 @@ public class LangEN {
 
 	        	 preset.set("items.utilgui", "§aUtils");
 	        	 preset.set("items.tnt", "§4TNT");
+	        	 
+	        	 //Custom messages
+	        	 preset.set("messages.kill.0_1", " §fdestroyed ");
+	        	 preset.set("messages.kill.0_2", "§f in an epic fight");
+	        	 
+	        	 preset.set("messages.void.0", " §f fell into the void");
+	        	 preset.set("messages.void.1", "§f thought he could fly... he learnt he couldnt");
 	        	 
 	             preset.save(f);
 	             

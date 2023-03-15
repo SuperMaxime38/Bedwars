@@ -144,4 +144,42 @@ public class TeamsManager {
 		}
 	}
 	
+	public static List<String> getAllPlayers(FileConfiguration config) {
+		List<String> red = new ArrayList<String>();
+		List<String> blue = new ArrayList<String>();
+		List<String> green = new ArrayList<String>();
+		List<String> yellow = new ArrayList<String>();
+		
+		red = config.getStringList("team.red.players");
+		blue = config.getStringList("team.blue.players");
+		green = config.getStringList("team.green.players");
+		yellow = config.getStringList("team.yellow.players");
+		
+		List<String> players = new ArrayList<String>();
+		
+		if(!red.isEmpty()) {
+			for(int i = 0; i <= red.size() - 1; i++) {
+				players.add(red.get(0));
+			}
+		}
+		if(!blue.isEmpty()) {
+			for(int i = 0; i <= blue.size()-1; i++) {
+				players.add(blue.get(i));
+			}
+		}
+		if(!green.isEmpty()) {
+			for(int i = 0; i <= green.size()-1; i++) {
+				players.add(green.get(i));
+			}
+		}
+		if(!yellow.isEmpty()) {
+			for(int i = 0; i <= yellow.size()-1; i++) {
+				players.add(yellow.get(i));
+			}
+		}
+		
+		
+		return players;
+	}
+	
 }

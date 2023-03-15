@@ -6,12 +6,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import maxetkita.bedwars.Bedwars;
+import maxetkita.bedwars.managers.LanguagesManager;
 import maxetkita.bedwars.managers.TeamsManager;
 
 public class CustomKillDeathMessage {
-//Do something
+ //Do something
 	
-	public static String KillMessage(FileConfiguration config, Player victim, Player killer) { //config : main.getConfig(), victim : killed, killer : killer lol
+	static FileConfiguration lang;
+	
+	public static String KillMessage(Bedwars main, Player victim, Player killer) { //config : main.getConfig(), victim : killed, killer : killer lol
+		lang = LanguagesManager.getLang(main);
+		FileConfiguration config = main.getConfig();
 		Random rdm = new Random();
 		int i = rdm.nextInt(0);
 		
@@ -23,7 +29,7 @@ public class CustomKillDeathMessage {
 		String msg = vcolor + vname + " §fdied of an unknown death";
 		switch(i) { //Penser à créer une traduction
 		case 0:
-			msg = kcolor + kname + " §fDestroyed " + vcolor + vname + " §f in an epic fight"; //Message type
+			msg = kcolor + kname + lang.getString("messages.kill.0_1") + vcolor + vname + lang.getString("messages.kill.0_2"); //Message type
 			break;
 		case 1:
 			
@@ -33,7 +39,9 @@ public class CustomKillDeathMessage {
 		return msg;
 	}
 	
-	public static String VoidkilledMessage(FileConfiguration config, Player victim, Player killer) { //qlq push ds le vide
+	public static String VoidkilledMessage(Bedwars main, Player victim, Player killer) { //qlq push ds le vide
+		lang = LanguagesManager.getLang(main);
+		FileConfiguration config = main.getConfig();
 		Random rdm = new Random();
 		int i = rdm.nextInt(0);
 		
@@ -55,27 +63,31 @@ public class CustomKillDeathMessage {
 		return msg;
 	}
 	
-	public static String VoidMessage(FileConfiguration config, Player victim) {
+	public static String VoidMessage(Bedwars main, Player victim) {
+		lang = LanguagesManager.getLang(main);
+		FileConfiguration config = main.getConfig();
 		Random rdm = new Random();
 		int i = rdm.nextInt(2);
 		
 		ChatColor vcolor = TeamsManager.getPlayerTeamColor(config, victim);
 		String vname = victim.getDisplayName();
 		
-		String msg = vcolor + vname + " §f fell into the void";
+		String msg = vcolor + vname + lang.getString("messages.void.0");
 		switch(i) { //Penser à créer une traduction
 		case 0:
-			msg = vcolor + vname + "§f thought he could fly... he learnt he couldnt";
+			msg = vcolor + vname + lang.getString("messages.void.0");
 			break;
 		case 1:
-			msg = vcolor + vname + " §ffell into the void";
+			msg = vcolor + vname + lang.getString("messages.void.1");
 			break;
 		}
 		
 		return msg;
 	}
 	
-	public static String FireDeathMessage(FileConfiguration config, Player victim) {
+	public static String FireDeathMessage(Bedwars main, Player victim) {
+		lang = LanguagesManager.getLang(main);
+		FileConfiguration config = main.getConfig();
 		Random rdm = new Random();
 		int i = rdm.nextInt(2);
 		

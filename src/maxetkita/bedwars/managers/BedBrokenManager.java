@@ -44,7 +44,7 @@ public class BedBrokenManager implements Listener{
 					return;
 				}
 				main.getConfig().set("bed.red.alive", false);
-				main.saveConfig();
+				main.saveDefaultConfig();
 				members = TeamsManager.getTeam(main.getConfig(), "red");
 				for(int i = 1; i <= members.size(); i++) {
 					pl = Bukkit.getPlayer(members.get(i));
@@ -57,7 +57,7 @@ public class BedBrokenManager implements Listener{
 					return;
 				}
 				main.getConfig().set("bed.blue.alive", false);
-				main.saveConfig();
+				main.saveDefaultConfig();
 				members = TeamsManager.getTeam(main.getConfig(), "blue");
 				for(int i = 0; i <= members.size(); i++) {
 					pl = Bukkit.getPlayer(members.get(i));
@@ -71,7 +71,7 @@ public class BedBrokenManager implements Listener{
 					return;
 				}
 				main.getConfig().set("bed.green.alive", false);
-				main.saveConfig();
+				main.saveDefaultConfig();
 				members = TeamsManager.getTeam(main.getConfig(), "green");
 				for(int i = 0; i <= members.size(); i++) {
 					pl = Bukkit.getPlayer(members.get(i));
@@ -85,7 +85,7 @@ public class BedBrokenManager implements Listener{
 					return;
 				}
 				main.getConfig().set("bed.yellow.alive", false);
-				main.saveConfig();
+				main.saveDefaultConfig();
 				members = TeamsManager.getTeam(main.getConfig(), "yellow");
 				for(int i = 0; i <= members.size(); i++) {
 					pl = Bukkit.getPlayer(members.get(i));

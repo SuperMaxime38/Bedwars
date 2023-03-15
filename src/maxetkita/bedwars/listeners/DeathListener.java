@@ -19,6 +19,7 @@ import maxetkita.bedwars.Bedwars;
 import maxetkita.bedwars.fancy.CustomKillDeathMessage;
 import maxetkita.bedwars.managers.PresetManager;
 import maxetkita.bedwars.managers.TeamsManager;
+import maxetkita.bedwars.utils.LastDamager;
 import maxetkita.bedwars.utils.Locations;
 
 public class DeathListener implements Listener{
@@ -43,7 +44,7 @@ public class DeathListener implements Listener{
 			if(p.getLocation().getY() < minY) {
 				p.setHealth(0);
 				p.setLastDamageCause(new EntityDamageEvent(p, DamageCause.VOID, 0));
-				Bukkit.broadcastMessage(CustomKillDeathMessage.VoidMessage(config, p));
+				Bukkit.broadcastMessage(CustomKillDeathMessage.VoidMessage(main, p));
 			}
 		}
 	}
@@ -113,7 +114,7 @@ public class DeathListener implements Listener{
 		if(TeamsManager.getPlayerTeam(config, p).equals("none")) return;
 		if(TeamsManager.getPlayerTeam(config, killer).equals("none")) return;
 		
-		Bukkit.broadcastMessage(CustomKillDeathMessage.KillMessage(config, p, killer));
+		Bukkit.broadcastMessage(CustomKillDeathMessage.KillMessage(main, p, killer));
 		
 	}
 	
@@ -121,7 +122,7 @@ public class DeathListener implements Listener{
 	public static void otherDeaths(EntityDeathEvent e) {
 		if(!(e.getEntity() instanceof Player)) return;
 		Player p = (Player) e.getEntity();
-		if(TeamsManager.getPlayerTeam(config, p).equals("none")) return;
+		if(TeamsManager.getPlayerTeam(main.getConfig(), p).equals("none")) return;
 		EntityDamageEvent event = e.getEntity().getLastDamageCause();
 		DamageCause dmg = event.getCause();
 		
@@ -132,17 +133,32 @@ public class DeathListener implements Listener{
 			msg = "";
 			break;
 		case VOID:
-			msg = CustomKillDeathMessage.VoidMessage(config, p);
+			msg = CustomKillDeathMessage.VoidMessage(main, p);
 			break;
 		case FIRE:
-			msg = CustomKillDeathMessage.FireDeathMessage(config, p);
+			msg = CustomKillDeathMessage.FireDeathMessage(main, p);
 			break;
 		case FIRE_TICK:
-			msg = CustomKillDeathMessage.FireDeathMessage(config, p);
+			msg = CustomKillDeathMessage.FireDeathMessage(main, p);
 			break;
 		}
 		
 		Bukkit.broadcastMessage(msg);
+	}
+	
+	@EventHandler
+	public static void lastDamager(EntityDamageByEntityEvent e) { //SET who is the last damager
+		if(!(e.getEntity() instanceof Player)) return;
+		if(!(e.getDamager() instanceof Player)) return;
+		
+		Player p = (Player) e.getEntity();
+		Player dmg = (Player) e.getDamager();
+		
+		String pteam = TeamsManager.getPlayerTeam(main.getConfig(), p);
+		String dteam = TeamsManager.getPlayerTeam(main.getConfig(), dmg);
+		if(pteam.equals("none") || dteam.equals("none")) return;
+		
+		LastDamager.setLastDamager(p, dmg);
 	}
 	
 }

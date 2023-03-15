@@ -1,6 +1,7 @@
 package maxetkita.bedwars.commands;
 
 import java.io.File;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,8 +12,11 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import maxetkita.bedwars.Bedwars;
+import maxetkita.bedwars.managers.IngotGenerator;
 import maxetkita.bedwars.managers.LanguagesManager;
 import maxetkita.bedwars.managers.PresetManager;
+import maxetkita.bedwars.managers.TeamsManager;
+import maxetkita.bedwars.utils.LastDamager;
 
 public class BedwarsCommand implements CommandExecutor{
 
@@ -45,18 +49,30 @@ public class BedwarsCommand implements CommandExecutor{
 				s.sendMessage(header + lang.getString("commands.bedwars.preset.noargs"));
 				s.sendMessage(header + lang.getString("commands.bedwars.preset.cmdlist"));
 				return true;
+			case "start": //Start a game of bedwars
+				main.getConfig().set("enable", true);
+				main.saveDefaultConfig();
+				List<String> players = TeamsManager.getAllPlayers(main.getConfig());
+				LastDamager.init(players);
+				IngotGenerator.generateAll(main);
+				s.sendMessage(lang.getString("commands.bedwars.start"));
+				return true;
+			case "lang":
+				s.sendMessage(header + lang.getString("commands.lang.noargs"));
+				s.sendMessage(header + lang.getString("commands.lang.noargs2"));
+				return true;
 			}
 		} else if(args.length == 2) {
 			switch(args[0]) {
 			case "preset":
 				if(args[1].equals("enable")) {
 					main.getConfig().set("preset.enable", true);
-					main.saveConfig();
+					main.saveDefaultConfig();
 					s.sendMessage(header + lang.getString("commands.bedwars.preset.enable"));
 					
 				} else if(args[1].equals("disable")) {
 					main.getConfig().set("preset.enable", false);
-					main.saveConfig();
+					main.saveDefaultConfig();
 					s.sendMessage(header + lang.getString("commands.bedwars.preset.disable"));
 				} else if(args[1].equals("list")) {
 					File dir  = new File(Bukkit.getServer().getPluginManager().getPlugin("Baidouars").getDataFolder(), File.separator + "presets");
@@ -87,6 +103,25 @@ public class BedwarsCommand implements CommandExecutor{
 					
 				}
 				return true;
+			case "lang":
+				switch(args[1]) {
+				case "en_us":
+					main.getConfig().set("lang", "en_us");
+					main.saveDefaultConfig();
+					lang = LanguagesManager.getLang(main);
+					s.sendMessage(header + lang.getString("commands.lang.changed"));
+					break;
+				case "fr_fr":
+					main.getConfig().set("lang", "fr_fr");
+					main.saveDefaultConfig();
+					lang = LanguagesManager.getLang(main);
+					s.sendMessage(header + lang.getString("commands.lang.changed"));
+					break;
+				default:
+					s.sendMessage(header + lang.getString("commands.lang.error"));
+					break;
+				}
+				return true;
 			}
 		} else if(args.length == 3) {
 			switch(args[0]) {
@@ -104,7 +139,7 @@ public class BedwarsCommand implements CommandExecutor{
 				case "load":
 					if(exist == true) {
 						main.getConfig().set("preset.name", args[2]);
-						main.saveConfig();
+						main.saveDefaultConfig();
 						s.sendMessage(header + "§aThe preset " + args[2] + " succesfully loaded");
 					} else {
 						s.sendMessage(header + lang.getString("commands.bedwars.preset.doesntexist"));
@@ -121,7 +156,7 @@ public class BedwarsCommand implements CommandExecutor{
 					if(exist == true) {
 						if(args[2].equals(main.getConfig().getString("preset.name"))) {
 							main.getConfig().set("preset.name", "null");
-							main.saveConfig();
+							main.saveDefaultConfig();
 							s.sendMessage(header + lang.getString("commands.bedwars.preset.deleteconfirm"));
 						}
 						File dir  = new File(Bukkit.getServer().getPluginManager().getPlugin("Baidouars").getDataFolder(), File.separator + "presets");

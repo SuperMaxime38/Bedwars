@@ -9,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 import maxetkita.bedwars.Bedwars;
 import maxetkita.bedwars.managers.IngotGenerator;
@@ -17,6 +18,7 @@ import maxetkita.bedwars.managers.MapGenerator;
 import maxetkita.bedwars.managers.PresetManager;
 import maxetkita.bedwars.managers.TeamsManager;
 import maxetkita.bedwars.shop.IronNPC;
+import maxetkita.bedwars.utils.LastDamager;
 
 public class DebugCommand implements CommandExecutor{
 
@@ -32,17 +34,20 @@ public class DebugCommand implements CommandExecutor{
 		FileConfiguration lang = LanguagesManager.getLang(main);
 		
 		if(args.length == 0) {
-			
+		
 		} else if(args.length == 1) {
 			switch(args[0]) {
 			case "activate":
 				main.getConfig().set("enable", true);
-				main.saveConfig();
+				main.saveDefaultConfig();
 				IngotGenerator.generateAll(main);
+				List<String> players = TeamsManager.getAllPlayers(main.getConfig());
+				LastDamager.init(players);
+				System.out.println("[Baidouars] > A bedwars game started"); //Traduire
 				return true;
 			case "disable":
 				main.getConfig().set("enable", false);
-				main.saveConfig();
+				main.saveDefaultConfig();
 				return true;
 			case "spawnvillager":
 				IronNPC.spawnIronNPC(main);
@@ -53,6 +58,11 @@ public class DebugCommand implements CommandExecutor{
 						entity.remove();
 					}
 				}
+			case "hmtest":
+				LastDamager.test();
+				return true;
+			case "lastdmg":
+				System.out.println(LastDamager.getLastDamager((Player) sender));
 				return true;
 			case "lang":
 				sender.sendMessage(lang.getString("commands").toString());
@@ -92,12 +102,12 @@ public class DebugCommand implements CommandExecutor{
 				switch(args[1]) {
 				case "en":
 					main.getConfig().set("lang", "en_us");
-					main.saveConfig();
+					main.saveDefaultConfig();
 					sender.sendMessage("[Lang] > Language changed on English");
 					break;
 				case "fr":
 					main.getConfig().set("lang", "fr_fr");
-					main.saveConfig();
+					main.saveDefaultConfig();
 					sender.sendMessage("[Lang] > Language changed on French");
 					break;
 				}
